@@ -1,0 +1,199 @@
+@mixin respond($breakpoint) {
+    @if $breakpoint == smallPhone {
+      @media (max-width: 400px) { @content }
+    }
+    @if $breakpoint == largePhone {
+      @media (max-width: 600px) { @content }
+    }
+  
+    @if $breakpoint == tablet {
+      @media (max-width: 768px) { @content }
+    }
+  
+    @if $breakpoint == largeTablet {
+      @media (max-width: 1024px) { @content }
+    }
+  }
+
+  $main-black: #000;
+  $colour-1: #cfa8a5;
+  $colour-2: #000000;
+  $colour-3: rgba(77, 94, 114, 0.315);
+  
+  $main-font: 'Quicksand', sans-serif;
+  
+  $text-1: #f8f7f7;
+  $text-2: #e4e4e4;
+
+/***********************************************************/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  
+}
+
+body {
+  font-weight: 400;
+  font-family: $main-font;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $text-1;
+  padding-bottom: 2rem;
+  background-color: $colour-1;
+}
+
+a:link, a:visited {
+  color: $colour-2;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: $colour-1;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+span {
+  display: inline !important;
+}
+
+/**************************************************************************/
+
+
+.App {
+    height: 75vh;
+    box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
+    width: 50%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    overflow: hidden;
+    @include respond(largeTablet) {
+      height: 50vh;
+      width: 80%;
+    }
+    @include respond(tablet) {
+      height: 50vh;
+      width: 95%;
+    }
+    @include respond(largePhone) {
+      height: 100vh;
+      width: 100%;
+    }
+  }
+
+
+
+  .header {
+    text-align: center;
+    border: transparent;
+    background-color: $colour-2;
+    padding: 2rem 3rem;
+  
+    &__title {
+      font-weight: 600;
+      color: white;
+    }
+  }
+
+  .date-time {
+    margin-top: 1rem;
+    text-align: center;
+    color: $colour-2;
+  }
+
+  .tagline {
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    letter-spacing: 0.7px;
+    @include respond(largePhone) {
+      font-size: 1.5rem;
+    }
+  }
+
+.weather-search {
+
+  &__form {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  &__input {
+    display: inline-block;
+    border: solid 2px transparent;
+    background-color: rgba($colour-2, 0.1);
+    padding: 0.5rem 3rem;
+    border-radius: 2px;
+    margin-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 4rem;
+
+    &:focus {
+      outline: none;
+      border-bottom: solid 2px $colour-2;
+    }
+  }
+}
+
+.weather-data {
+  text-align: center;
+  margin-top: 3rem;
+
+  &__city {
+    color: $colour-2;
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    @include respond(tablet) {
+      margin-top: 2rem;
+    }
+    @include respond(largePhone) {
+      margin-top: 4rem;
+    }
+  }
+
+  &__property {
+    margin: 0 3rem;
+    @include respond(smallPhone) {
+      margin: 0 2rem;
+    }
+  }
+
+  &__title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  &__value {
+    color: $colour-2;
+    font-size: 4rem;
+    line-height: 0.6;
+    @include respond(smallPhone) {
+      font-size: 3rem;
+    }
+  }
+}
