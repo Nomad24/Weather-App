@@ -12,11 +12,11 @@ const WeatherData: React.FC<Info> = (props) => {
       <div className="weather-data__box">
         <span className="weather-data__property">
           <p className="weather-data__title">Temperature</p>
-          <p className="weather-data__value">{props.weather!.temp} °C</p>
+          <p className="weather-data__value">{props.weather!.temp}°C</p>
         </span>
         <span className="weather-data__property">
           <p className="weather-data__title">Humidity</p>
-          <p className="weather-data__value">{props.weather!.humidity} %</p>
+          <p className="weather-data__value">{props.weather!.humidity}%</p>
         </span>
         <span className="weather-data__property">
           <p className="weather-data__title">Pressure</p>

@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, MouseEvent, ChangeEvent} from 'react';
 import './style.scss';
 import axios from 'axios';
 
@@ -11,14 +11,16 @@ const App: React.FC = () => {
   const [weather, setWeather] = useState(null)
   const [city, setCity] = useState(null);
   const date = new Date();
-  const api_key = '*************************'
-  
+  const [input, setInput] = useState("");
+  const api_key = '************************'
 
-  const api = async (event: React.KeyboardEvent) => {
-    event.preventDefault();
-    
-    if(event.key === 'Enter') {
-      const location: string = (event.target as HTMLInputElement).value;
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setInput(e.currentTarget.value)
+
+
+  const api = async (event: MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+
+      const location: string = input;
 
       if(!location) {
         return alert("Enter city name"), setWeather(null);
@@ -33,7 +35,7 @@ const App: React.FC = () => {
       } catch (error) {
         alert(error);
       }
-    }
+    //}
   }
 
   return (
@@ -41,7 +43,7 @@ const App: React.FC = () => {
       <div className="header">
         <h1 className="header-title">Weather App</h1>
       </div>
-      <Context.Provider value={{api}}>
+      <Context.Provider value={{api, handleInputChange}}>
       <div className="date-time">
         { `${date.toLocaleDateString()}` }
       </div>
