@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const [city, setCity] = useState(null);
   const date = new Date();
   const [input, setInput] = useState("");
-  const api_key = '************************'
+  const api_key = '**************************'
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setInput(e.currentTarget.value)
 
@@ -30,7 +30,7 @@ const App: React.FC = () => {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}&units=metric`;
         const request = axios.get(url);
         const response = await request;
-        setWeather(response.data.main);
+        setWeather(response.data);
         setCity(response.data.name);
       } catch (error) {
         alert(error);
